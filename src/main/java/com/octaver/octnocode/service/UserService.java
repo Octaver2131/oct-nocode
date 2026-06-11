@@ -1,9 +1,14 @@
 package com.octaver.octnocode.service;
 
+import com.mybatisflex.core.query.QueryWrapper;
 import com.mybatisflex.core.service.IService;
+import com.octaver.octnocode.model.dto.UserQueryRequest;
 import com.octaver.octnocode.model.entity.User;
 import com.octaver.octnocode.model.vo.LoginUserVO;
+import com.octaver.octnocode.model.vo.UserVO;
 import jakarta.servlet.http.HttpServletRequest;
+
+import java.util.List;
 
 /**
  * 用户 服务层。
@@ -48,12 +53,36 @@ public interface UserService extends IService<User> {
     User getLoginUser(HttpServletRequest request);
 
     /**
+     * 获取脱敏后的用户信息
+     *
+     * @param user 用户信息
+     * @return
+     */
+    UserVO getUserVO(User user);
+
+    /**
+     * 获取脱敏后的用户信息（列表）
+     *
+     * @param userList 用户列表
+     * @return
+     */
+    List<UserVO> getUserVOList(List<User> userList);
+
+    /**
      * 用户注销
      *
      * @param request
      * @return
      */
     boolean userLogout(HttpServletRequest request);
+
+    /**
+     * 根据查询条件构建查询参数
+     *
+     * @param userQueryRequest
+     * @return
+     */
+    QueryWrapper getQueryWrapper(UserQueryRequest userQueryRequest);
 
     /**
      * 加密
