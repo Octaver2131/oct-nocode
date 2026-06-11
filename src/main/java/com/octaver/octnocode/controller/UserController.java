@@ -6,14 +6,12 @@ import com.octaver.octnocode.exception.ErrorCode;
 import com.octaver.octnocode.exception.ThrowUtils;
 import com.octaver.octnocode.model.dto.UserLoginRequest;
 import com.octaver.octnocode.model.dto.UserRegisterRequest;
+import com.octaver.octnocode.model.entity.User;
 import com.octaver.octnocode.model.vo.LoginUserVO;
 import com.octaver.octnocode.service.UserService;
 import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpServletRequest;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/user")
@@ -53,4 +51,11 @@ public class UserController {
         LoginUserVO loginUserVO = userService.userLogin(userAccount, userPassword, request);
         return ResultUtils.success(loginUserVO);
     }
+
+    @GetMapping("/get/login")
+    public BaseResponse<LoginUserVO> getLoginUser(HttpServletRequest request) {
+        User loginUser = userService.getLoginUser(request);
+        return ResultUtils.success(userService.getLoginUserVO(loginUser));
+    }
+
 }
