@@ -1,8 +1,14 @@
 spring:
   application:
     name: oct-nocode-backend
+  # mysql
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/oct_nocode
+    username: root
+    password: root
 server:
-  port: 8123
+  port: 8080
   servlet:
     context-path: /api
 # springdoc-openapi
@@ -16,3 +22,4 @@ knife4j:
   enable: true
   setting:
     language: zh_cn
+
