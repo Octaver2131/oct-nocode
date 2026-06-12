@@ -2,11 +2,11 @@
   <a-layout-header class="header">
     <a-row :wrap="false">
       <!-- 左侧：Logo和标题 -->
-      <a-col flex="200px">
+      <a-col flex="160px">
         <RouterLink to="/">
           <div class="header-left">
             <img class="logo" src="@/assets/logo.png" alt="Logo" />
-            <h1 class="site-title">鱼皮应用生成</h1>
+            <h1 class="site-title">NoCode</h1>
           </div>
         </RouterLink>
       </a-col>
@@ -22,7 +22,15 @@
       <!-- 右侧：用户操作区域 -->
       <a-col>
         <div class="user-login-status">
-          <a-button type="primary">登录</a-button>
+          <div v-if="loginUserStore.loginUser.id">
+            <a-space>
+              <a-avatar :src="loginUserStore.loginUser.userAvatar" />
+              {{ loginUserStore.loginUser.userName ?? '未命名' }}
+            </a-space>
+          </div>
+          <div v-else>
+            <a-button type="primary" href="/user/login">登录</a-button>
+          </div>
         </div>
       </a-col>
     </a-row>
@@ -33,6 +41,10 @@
 import { h, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import type { MenuProps } from 'ant-design-vue'
+import { useLoginUserStore } from '@/stores/loginUser.ts'
+
+// 获取登录用户状态
+let loginUserStore = useLoginUserStore()
 
 const router = useRouter()
 // 当前选中菜单
@@ -56,8 +68,8 @@ const menuItems = ref([
   },
   {
     key: 'others',
-    label: h('a', { href: 'https://www.codefather.cn', target: '_blank' }, '编程导航'),
-    title: '编程导航',
+    label: h('a', { href: 'https://github.com/Octaver2131', target: '_blank' }, 'Octaver'),
+    title: 'Octaver',
   },
 ])
 
