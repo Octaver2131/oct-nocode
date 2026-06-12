@@ -52,11 +52,7 @@ const linkList = [
   background: none;
   text-align: center;
   padding: 16px 0;
-  /* 固定在底部 */
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  margin-top: auto;
 }
 
 .footer-links {

@@ -21,12 +21,15 @@ import GlobalFooter from '@/components/GlobalFooter.vue'
 <style scoped>
 .basic-layout {
   background: none;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .main-content {
-  max-width: 1200px;
   padding: 24px;
   background: white;
-  margin: 16px auto 56px;
+  margin: 16px auto;
+  flex: 1;
 }
 </style>
