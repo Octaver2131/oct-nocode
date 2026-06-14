@@ -1,4 +1,4 @@
-package com.octaver.octnocode.model.dto;
+package com.octaver.octnocode.model.dto.user;
 
 import com.octaver.octnocode.common.PageRequest;
 import lombok.Data;
