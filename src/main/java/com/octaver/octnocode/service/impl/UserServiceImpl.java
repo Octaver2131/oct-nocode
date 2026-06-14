@@ -7,7 +7,7 @@ import com.mybatisflex.core.query.QueryWrapper;
 import com.mybatisflex.spring.service.impl.ServiceImpl;
 import com.octaver.octnocode.exception.BusinessException;
 import com.octaver.octnocode.exception.ErrorCode;
-import com.octaver.octnocode.model.dto.UserQueryRequest;
+import com.octaver.octnocode.model.dto.user.UserQueryRequest;
 import com.octaver.octnocode.model.emus.UserRoleEnum;
 import com.octaver.octnocode.model.entity.User;
 import com.octaver.octnocode.mapper.UserMapper;

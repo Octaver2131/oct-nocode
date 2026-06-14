@@ -2,7 +2,7 @@ package com.octaver.octnocode.service;
 
 import com.mybatisflex.core.query.QueryWrapper;
 import com.mybatisflex.core.service.IService;
-import com.octaver.octnocode.model.dto.UserQueryRequest;
+import com.octaver.octnocode.model.dto.user.UserQueryRequest;
 import com.octaver.octnocode.model.entity.User;
 import com.octaver.octnocode.model.vo.LoginUserVO;
 import com.octaver.octnocode.model.vo.UserVO;

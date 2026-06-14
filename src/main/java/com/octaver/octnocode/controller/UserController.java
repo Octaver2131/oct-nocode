@@ -10,7 +10,7 @@ import com.octaver.octnocode.constant.UserConstant;
 import com.octaver.octnocode.exception.BusinessException;
 import com.octaver.octnocode.exception.ErrorCode;
 import com.octaver.octnocode.exception.ThrowUtils;
-import com.octaver.octnocode.model.dto.*;
+import com.octaver.octnocode.model.dto.user.*;
 import com.octaver.octnocode.model.entity.User;
 import com.octaver.octnocode.model.vo.LoginUserVO;
 import com.octaver.octnocode.model.vo.UserVO;
