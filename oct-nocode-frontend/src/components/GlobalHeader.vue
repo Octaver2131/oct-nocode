@@ -55,9 +55,7 @@ import { useLoginUserStore } from '@/stores/loginUser.ts'
 import { userLogout } from '@/api/userController.ts'
 import { LogoutOutlined, HomeOutlined } from '@ant-design/icons-vue'
 
-// 获取登录用户状态
-let loginUserStore = useLoginUserStore()
-
+const loginUserStore = useLoginUserStore()
 const router = useRouter()
 // 当前选中菜单
 const selectedKeys = ref<string[]>(['/'])
@@ -78,6 +76,11 @@ const originItems = [
     key: '/admin/userManage',
     label: '用户管理',
     title: '用户管理',
+  },
+  {
+    key: '/admin/appManage',
+    label: '应用管理',
+    title: '应用管理',
   },
   {
     key: 'others',
@@ -103,8 +106,6 @@ const filterMenus = (menus = [] as MenuProps['items']) => {
 // 展示在菜单的路由数组
 const menuItems = computed<MenuProps['items']>(() => filterMenus(originItems))
 
-
-
 // 处理菜单点击
 const handleMenuClick: MenuProps['onClick'] = (e) => {
   const key = e.key as string
@@ -115,7 +116,7 @@ const handleMenuClick: MenuProps['onClick'] = (e) => {
   }
 }
 
-// 用户注销
+// 退出登录
 const doLogout = async () => {
   const res = await userLogout()
   if (res.data.code === 0) {
@@ -128,7 +129,6 @@ const doLogout = async () => {
     message.error('退出登录失败，' + res.data.message)
   }
 }
-
 </script>
 
 <style scoped>
