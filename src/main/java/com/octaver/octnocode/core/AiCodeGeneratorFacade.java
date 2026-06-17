@@ -1,6 +1,7 @@
 package com.octaver.octnocode.core;
 
 import com.octaver.octnocode.ai.AiCodeGeneratorService;
+import com.octaver.octnocode.ai.AiCodeGeneratorServiceFactory;
 import com.octaver.octnocode.ai.model.HtmlCodeResult;
 import com.octaver.octnocode.ai.model.MultiFileCodeResult;
 import com.octaver.octnocode.core.parser.CodeParserExecutor;
@@ -23,7 +24,7 @@ import java.io.File;
 public class AiCodeGeneratorFacade {
 
     @Resource
-    private AiCodeGeneratorService aiCodeGeneratorService;
+    private AiCodeGeneratorServiceFactory aiCodeGeneratorServiceFactory;
 
     /**
      * 统一入口：根据类型生成并保存代码
@@ -36,6 +37,8 @@ public class AiCodeGeneratorFacade {
         if (codeGenTypeEnum == null) {
             throw new BusinessException(ErrorCode.SYSTEM_ERROR, "生成类型为空");
         }
+        // 根据 appId 获取对应的 AI 服务实例
+        AiCodeGeneratorService aiCodeGeneratorService = aiCodeGeneratorServiceFactory.getAiCodeGeneratorService(appId);
         return switch (codeGenTypeEnum) {
             case HTML -> {
                 HtmlCodeResult result = aiCodeGeneratorService.generateHtmlCode(userMessage);
@@ -64,6 +67,8 @@ public class AiCodeGeneratorFacade {
         if (codeGenTypeEnum == null) {
             throw new BusinessException(ErrorCode.SYSTEM_ERROR, "生成类型为空");
         }
+        // 根据 appId 获取对应的 AI 服务实例
+        AiCodeGeneratorService aiCodeGeneratorService = aiCodeGeneratorServiceFactory.getAiCodeGeneratorService(appId);
         return switch (codeGenTypeEnum) {
 //            case HTML -> generateAndSaveHtmlCodeStream(userMessage);
 //            case MULTI_FILE -> generateAndSaveMultiFileCodeStream(userMessage);

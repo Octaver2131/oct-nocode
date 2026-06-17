@@ -105,11 +105,11 @@
 <!--            <artifactId>cos_api</artifactId>-->
 <!--            <version>5.6.227</version>-->
 <!--        </dependency>-->
-<!--        &lt;!&ndash; 本地缓存 &ndash;&gt;-->
-<!--        <dependency>-->
-<!--            <groupId>com.github.ben-manes.caffeine</groupId>-->
-<!--            <artifactId>caffeine</artifactId>-->
-<!--        </dependency>-->
+        <!-- 本地缓存 -->
+        <dependency>
+            <groupId>com.github.ben-manes.caffeine</groupId>
+            <artifactId>caffeine</artifactId>
+        </dependency>
         <!-- 监控 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
