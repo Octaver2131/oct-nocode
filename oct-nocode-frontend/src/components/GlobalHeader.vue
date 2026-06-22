@@ -53,7 +53,7 @@ import { useRouter } from 'vue-router'
 import { type MenuProps, message } from 'ant-design-vue'
 import { useLoginUserStore } from '@/stores/loginUser.ts'
 import { userLogout } from '@/api/userController.ts'
-import { LogoutOutlined, HomeOutlined } from '@ant-design/icons-vue'
+import { LogoutOutlined } from '@ant-design/icons-vue'
 
 const loginUserStore = useLoginUserStore()
 const router = useRouter()
@@ -68,7 +68,6 @@ router.afterEach((to, from, next) => {
 const originItems = [
   {
     key: '/',
-    icon: () => h(HomeOutlined),
     label: '主页',
     title: '主页',
   },
@@ -81,6 +80,11 @@ const originItems = [
     key: '/admin/appManage',
     label: '应用管理',
     title: '应用管理',
+  },
+  {
+    key: '/admin/chatManage',
+    label: '对话管理',
+    title: '对话管理',
   },
   {
     key: 'others',

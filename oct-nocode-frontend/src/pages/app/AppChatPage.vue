@@ -16,7 +16,7 @@
           <template #icon>
             <CloudUploadOutlined />
           </template>
-          部署按钮
+          部署
         </a-button>
       </div>
     </div>
@@ -404,11 +404,9 @@ const generateCode = async (userMessage: string, aiMessageIndex: number) => {
       if (streamCompleted) return
 
       try {
-        // 解析JSON包装的数据
         const parsed = JSON.parse(event.data)
         const content = parsed.d
 
-        // 拼接内容
         if (content !== undefined && content !== null) {
           fullContent += content
           messages.value[aiMessageIndex].content = fullContent
