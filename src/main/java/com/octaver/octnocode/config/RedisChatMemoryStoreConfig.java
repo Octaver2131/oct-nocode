@@ -1,15 +1,12 @@
 package com.octaver.octnocode.config;
 
-import dev.langchain4j.community.store.embedding.redis.spring.RedisEmbeddingStoreAutoConfiguration;
 import dev.langchain4j.community.store.memory.chat.redis.RedisChatMemoryStore;
 import lombok.Data;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@SpringBootApplication(exclude = {RedisEmbeddingStoreAutoConfiguration.class})
 @ConfigurationProperties(prefix = "spring.data.redis")
 @Data
 public class RedisChatMemoryStoreConfig {
