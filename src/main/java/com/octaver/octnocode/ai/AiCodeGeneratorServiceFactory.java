@@ -3,7 +3,7 @@ package com.octaver.octnocode.ai;
 
 import com.github.benmanes.caffeine.cache.Cache;
 import com.github.benmanes.caffeine.cache.Caffeine;
-import com.octaver.octnocode.ai.tools.FileWriteTool;
+import com.octaver.octnocode.ai.tools.*;
 import com.octaver.octnocode.exception.BusinessException;
 import com.octaver.octnocode.exception.ErrorCode;
 import com.octaver.octnocode.model.emus.CodeGenTypeEnum;
@@ -91,7 +91,13 @@ public class AiCodeGeneratorServiceFactory {
                     .chatModel(chatModel)
                     .streamingChatModel(reasoningStreamingChatModel)
                     .chatMemoryProvider(memoryId -> chatMemory)
-                    .tools(new FileWriteTool())
+                    .tools(
+                            new FileDeleteTool(),
+                            new FileDirReadTool(),
+                            new FileModifyTool(),
+                            new FileReadTool(),
+                            new FileWriteTool()
+                    )
                     // 处理工具调用幻觉问题
                     .hallucinatedToolNameStrategy(toolExecutionRequest ->
                             ToolExecutionResultMessage.from(toolExecutionRequest,
