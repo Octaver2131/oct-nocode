@@ -2,6 +2,7 @@ package com.octaver.octnocode.service;
 
 import com.mybatisflex.core.query.QueryWrapper;
 import com.mybatisflex.core.service.IService;
+import com.octaver.octnocode.model.dto.app.AppAddRequest;
 import com.octaver.octnocode.model.dto.app.AppQueryRequest;
 import com.octaver.octnocode.model.entity.App;
 import com.octaver.octnocode.model.entity.User;
@@ -66,4 +67,13 @@ public interface AppService extends IService<App> {
      * @param appUrl 应用访问URL
      */
     void generateAppScreenshotAsync(Long appId, String appUrl);
+
+    /**
+     * 创建应用
+     *
+     * @param appAddRequest
+     * @param loginUser
+     * @return
+     */
+    Long createApp(AppAddRequest appAddRequest, User loginUser);
 }
