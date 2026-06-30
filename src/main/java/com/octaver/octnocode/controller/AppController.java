@@ -55,9 +55,6 @@ public class AppController {
     @Resource
     private ProjectDownloadService projectDownloadService;
 
-    @Resource
-    private AiCodeGenTypeRoutingService aiCodeGenTypeRoutingService;
-
     /**
      * 创建应用
      *
