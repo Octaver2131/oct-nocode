@@ -7,6 +7,7 @@ import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Scope;
 
 /**
  * AI代码生成类型路由服务工厂
@@ -32,6 +33,7 @@ public class AiCodeGenTypeRoutingServiceFactory {
      * 默认提供一个 Bean
      * @return
      */
+    @Scope("prototype")
     @Bean
     public AiCodeGenTypeRoutingService aiCodeGenTypeRoutingService() {
         return createAiCodeGenTypeRoutingService();
