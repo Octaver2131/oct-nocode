@@ -105,6 +105,7 @@ public class AiCodeGeneratorServiceFactory {
                                 ToolExecutionResultMessage.from(toolExecutionRequest,
                                         "Error: there is no tool called" + toolExecutionRequest.name())
                         )
+                        .maxSequentialToolsInvocations(50)              // 最大连续工具调用次数
                         .inputGuardrails(new PromptSafetyInputGuardrail()) // 添加输入护轨
 //                        .outputGuardrails(new RetryOutputGuardrail()) // 添加输出护轨
                         .build();
@@ -117,6 +118,7 @@ public class AiCodeGeneratorServiceFactory {
                         .chatModel(chatModel)
                         .streamingChatModel(openAiStreamingChatModel)
                         .chatMemory(chatMemory)
+                        .maxSequentialToolsInvocations(50)              // 最大连续工具调用次数
                         .inputGuardrails(new PromptSafetyInputGuardrail()) // 添加输入护轨
 //                        .outputGuardrails(new RetryOutputGuardrail()) // 添加输出护轨
                         .build();
