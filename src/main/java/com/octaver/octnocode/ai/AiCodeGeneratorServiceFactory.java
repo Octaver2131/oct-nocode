@@ -3,6 +3,7 @@ package com.octaver.octnocode.ai;
 import com.github.benmanes.caffeine.cache.Cache;
 import com.github.benmanes.caffeine.cache.Caffeine;
 import com.octaver.octnocode.ai.guardrail.PromptSafetyInputGuardrail;
+import com.octaver.octnocode.ai.guardrail.RetryOutputGuardrail;
 import com.octaver.octnocode.ai.tools.*;
 import com.octaver.octnocode.exception.BusinessException;
 import com.octaver.octnocode.exception.ErrorCode;
@@ -105,6 +106,7 @@ public class AiCodeGeneratorServiceFactory {
                                         "Error: there is no tool called" + toolExecutionRequest.name())
                         )
                         .inputGuardrails(new PromptSafetyInputGuardrail()) // 添加输入护轨
+//                        .outputGuardrails(new RetryOutputGuardrail()) // 添加输出护轨
                         .build();
             }
             // HTML 和 多文件生成，使用流式对话模型
@@ -112,11 +114,12 @@ public class AiCodeGeneratorServiceFactory {
                 // 使用多例模式的 streamingChatModel 解决并发问题
                 StreamingChatModel openAiStreamingChatModel = SpringContextUtil.getBean("streamingChatModelPrototype", StreamingChatModel.class);
                 yield AiServices.builder(AiCodeGeneratorService.class)
-                    .chatModel(chatModel)
-                    .streamingChatModel(openAiStreamingChatModel)
-                    .chatMemory(chatMemory)
-                    .inputGuardrails(new PromptSafetyInputGuardrail()) // 添加输入护轨
-                    .build();
+                        .chatModel(chatModel)
+                        .streamingChatModel(openAiStreamingChatModel)
+                        .chatMemory(chatMemory)
+                        .inputGuardrails(new PromptSafetyInputGuardrail()) // 添加输入护轨
+//                        .outputGuardrails(new RetryOutputGuardrail()) // 添加输出护轨
+                        .build();
             }
 
             default -> throw new BusinessException(ErrorCode.SYSTEM_ERROR, "不支持的代码生成类型: " + codeGenType.getValue());
