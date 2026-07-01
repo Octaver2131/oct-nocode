@@ -1,9 +1,8 @@
 package com.octaver.octnocode.ai;
 
-
-import cn.hutool.extra.spring.SpringUtil;
 import com.github.benmanes.caffeine.cache.Cache;
 import com.github.benmanes.caffeine.cache.Caffeine;
+import com.octaver.octnocode.ai.guardrail.PromptSafetyInputGuardrail;
 import com.octaver.octnocode.ai.tools.*;
 import com.octaver.octnocode.exception.BusinessException;
 import com.octaver.octnocode.exception.ErrorCode;
@@ -105,6 +104,7 @@ public class AiCodeGeneratorServiceFactory {
                                 ToolExecutionResultMessage.from(toolExecutionRequest,
                                         "Error: there is no tool called" + toolExecutionRequest.name())
                         )
+                        .inputGuardrails(new PromptSafetyInputGuardrail()) // 添加输入护轨
                         .build();
             }
             // HTML 和 多文件生成，使用流式对话模型
@@ -115,6 +115,7 @@ public class AiCodeGeneratorServiceFactory {
                     .chatModel(chatModel)
                     .streamingChatModel(openAiStreamingChatModel)
                     .chatMemory(chatMemory)
+                    .inputGuardrails(new PromptSafetyInputGuardrail()) // 添加输入护轨
                     .build();
             }
 
